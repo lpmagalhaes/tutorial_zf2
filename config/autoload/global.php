@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Global Configuration Override
  *
@@ -10,7 +11,17 @@
  * control, so do not include passwords or other sensitive information in this
  * file.
  */
-
 return array(
-    // ...
+    'db' => array(
+        'driver' => 'Pdo',
+        'dsn' => 'mysql:dbname=circuito_visao;host=192.95.33.11',
+        'driver_options' => array(
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES "UTF8"'
+        ),
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'AdapterDb' => 'Zend\Db\Adapter\AdapterServiceFactory', // new Zend\Db\Adapter\AdapterServiceFactory
+        ),
+    ),
 );
